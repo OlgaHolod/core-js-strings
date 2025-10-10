@@ -41,7 +41,17 @@ function getStringLength(a) {
  *   isString(new String('test')) => true
  */
 function isString() {
-  let string;
+  const string = 'test'.toString();
+  if (
+    string === null ||
+    string.length === 0 ||
+    string === [] ||
+    string === {} ||
+    string === undefined ||
+    string === ''
+  ) {
+    return false;
+  }
   if (typeof string === 'string') {
     return true;
   }
@@ -59,8 +69,11 @@ function isString() {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  const a = value1.replace(/-/g, '');
+  const b = value2.replace(/-/g, '');
+  const c = `${a}${b}`;
+  return c;
 }
 
 /**
@@ -74,8 +87,9 @@ function concatenateStrings(/* value1, value2 */) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(str) {
+  const a = str.charAt(0);
+  return a;
 }
 
 /**
