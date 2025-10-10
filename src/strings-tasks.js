@@ -40,22 +40,21 @@ function getStringLength(a) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString() {
-  const string = 'test'.toString();
+function isString(string) {
   if (
-    string === null ||
-    string.length === 0 ||
-    string === [] ||
-    string === {} ||
-    string === undefined ||
-    string === ''
+    string === null &&
+    string === [] &&
+    string === {} &&
+    string === undefined &&
+    string === '' &&
+    string === 'test'
   ) {
     return false;
   }
   if (typeof string === 'string') {
     return true;
   }
-  return false;
+  return true;
 }
 /**
  * Returns the result of concatenation of two strings.
@@ -69,9 +68,7 @@ function isString() {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(value1, value2) {
-  const a = value1.replace(/-/g, '');
-  const b = value2.replace(/-/g, '');
+function concatenateStrings(a, b) {
   const c = `${a}${b}`;
   return c;
 }
@@ -103,8 +100,9 @@ function getFirstChar(str) {
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  const a = value.trim();
+  return a;
 }
 
 /**
@@ -118,8 +116,9 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingWhitespaces(value) {
+  const a = value.trimStart();
+  return a;
 }
 
 /**
@@ -133,8 +132,9 @@ function removeLeadingWhitespaces(/* value */) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeTrailingWhitespaces(value) {
+  const a = value.trimEnd();
+  return a;
 }
 
 /**
@@ -150,8 +150,12 @@ function removeTrailingWhitespaces(/* value */) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  if (str === '' || times < 1) {
+    return '';
+  }
+  const a = str.repeat(times);
+  return a;
 }
 
 /**
