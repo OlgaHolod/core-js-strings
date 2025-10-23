@@ -366,8 +366,12 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  const words = str.split(' ');
+  const reversedWords = words.map((word) => {
+    return word.split('').reverse().join('');
+  });
+  return reversedWords.join(' ');
 }
 
 /**
@@ -478,16 +482,8 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(str) {
-  return str.replace(/[a-zA-Z]/g, function (char) {
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const isLowerCase = char === char.toLowerCase();
-    const upperChar = char.toUpperCase();
-    const index = alphabet.indexOf(upperChar);
-    const newIndex = (index + 13) % 26;
-    const newChar = alphabet[newIndex];
-    return isLowerCase ? newChar.toLowerCase() : newChar;
-  });
+function encodeToRot13(/* str */) {
+  throw new Error('Not implemented');
 }
 
 /**
