@@ -456,8 +456,10 @@ function unbracketTag(str) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  const emails = str.split(';');
+  const validEmails = emails.map((email) => email.trim());
+  return validEmails;
 }
 
 /**
@@ -476,8 +478,16 @@ function extractEmails(/* str */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  return str.replace(/[a-zA-Z]/g, function (char) {
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const isLowerCase = char === char.toLowerCase();
+    const upperChar = char.toUpperCase();
+    const index = alphabet.indexOf(upperChar);
+    const newIndex = (index + 13) % 26;
+    const newChar = alphabet[newIndex];
+    return isLowerCase ? newChar.toLowerCase() : newChar;
+  });
 }
 
 /**
