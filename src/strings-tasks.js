@@ -55,9 +55,8 @@ function isString(string) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(a, b) {
-  const c = `${a}${b}`;
-  return c;
+function concatenateStrings(value1, value2) {
+  return String.prototype.concat(value1, value2);
 }
 
 /**
@@ -197,7 +196,16 @@ function removeLastOccurrences(str, value) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes() {}
+function sumOfCodes(str) {
+  let sum = 0;
+  if (str === undefined || str === null) {
+    return 0;
+  }
+  for (let i = 0; i < str.length; i += 1) {
+    sum += str.charCodeAt(i);
+  }
+  return sum;
+}
 
 /**
  * Checks if a string starts with a specific substring.
