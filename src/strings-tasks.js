@@ -41,17 +41,7 @@ function getStringLength(a) {
  *   isString(new String('test')) => true
  */
 function isString(string) {
-  if (
-    string === null &&
-    string === [] &&
-    string === {} &&
-    string === undefined &&
-    string === '' &&
-    string === 'test'
-  ) {
-    return false;
-  }
-  return true;
+  return typeof string === 'string' || string instanceof String;
 }
 /**
  * Returns the result of concatenation of two strings.
@@ -168,8 +158,11 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  const a = str.replace(value, '');
-  return a;
+  const index = str.indexOf(value);
+  if (index === -1) {
+    return str;
+  }
+  return str.slice(0, index) + str.slice(index + value.length);
 }
 
 /**
@@ -249,7 +242,11 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {}
+function formatTime(minutes, seconds) {
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  const formattedSeconds = String(seconds).padStart(2, '0');
+  return `${formattedMinutes}:${formattedSeconds}`;
+}
 
 /**
  * Returns a string in reverse order.
